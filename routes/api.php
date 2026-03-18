@@ -7,6 +7,9 @@ use App\Http\Controllers\TaskController;
 use App\Http\Controllers\UserController;
 
 Route::post('/login',[AuthController::class,'login']);
+Route::options('{any}', function() {
+    return response()->json([], 200);
+})->where('any', '.*');
 
 
 Route::middleware('auth:sanctum')->group(function(){
